@@ -24,9 +24,7 @@ namespace WinFormUI
 
         private void LoadPeopleList()
         {
-            people.Add(new PersonModel { FirstName = "Donald", LastName = "Duck" });
-            people.Add(new PersonModel { FirstName = "Dolly", LastName = "Duck" });
-            people.Add(new PersonModel { FirstName = "Mikke", LastName = "Mus" });
+            people = SqliteDataAccess.LoadPeople();
 
             WireUpPeopleList();
         }
@@ -50,8 +48,7 @@ namespace WinFormUI
             p.FirstName = firstNameText.Text;
             p.LastName = lastNameText.Text;
 
-            people.Add(p);
-            WireUpPeopleList();
+            SqliteDataAccess.SavePerson(p);
 
             firstNameText.Text = "";
             lastNameText.Text = "";
